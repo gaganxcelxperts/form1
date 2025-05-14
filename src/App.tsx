@@ -1,5 +1,5 @@
 import React from 'react'
-import MultiStepForm from './components/multiStepForm'
+import MultiStepForm from "./components/MultiStepForm"
 const App = () => {
   return (
     <div>
