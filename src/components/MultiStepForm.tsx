@@ -1,5 +1,6 @@
 import React ,{useState} from "react";
 import { useFormik } from "formik";
+import axios from "axios";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -24,8 +25,16 @@ const MultiStepForm:React.FC=()=>{
             address:""
         },
         validationSchema:validationSchemas[step],
-        onSubmit:(values)=>{
-            alert("Form submitted" + JSON.stringify(values,null,2))
+        onSubmit:async(values)=>{
+            try {
+                const response=await axios.post("https://jsonplaceholder.typicode.com/posts",values)
+                console.log("Form submitted", response.data);
+                alert("Form submitted to api" + JSON.stringify(response.data,null,2));
+                
+            } catch (error) {
+                console.error("Error occured:",error);
+            }
+            
         }
     });
 
