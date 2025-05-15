@@ -67,10 +67,10 @@ const MultiStepForm:React.FC=()=>{
                     {step===1 && <Step2 formik={formik}/>}
                     {step===2 && <Step3 formik={formik}/>}
 
-                    <div>
+                    <div className="flex gap-4">
                         {step>0 && (
                             <button
-                                className="bg-orange-500 px-4 py-1 rounded-md text-white"
+                                className="bg-orange-500 px-6 py-1 rounded-md text-white"
                                 type="button"
                                 onClick={prev}
                             >
@@ -78,14 +78,14 @@ const MultiStepForm:React.FC=()=>{
                             </button>
                         )}
                         {step <2 && (
-                            <button onClick={next} type="button" className="bg-blue-500 text-white px-4 py-1 rounded-md">
+                            <button onClick={next} type="button" className="bg-blue-500 text-white px-6 py-1 rounded-md">
                                 Next
                             </button>
                         )}
 
                         {step===2 && (
                             <button
-                                className="bg-green-500 px-4 py-1 rounded-md"
+                                className="bg-green-500 px-6 py-1 rounded-md"
                             type="submit">
                                 Submit
                             </button>
