@@ -1,5 +1,6 @@
 import React ,{useState} from "react";
 import { useFormik } from "formik";
+import { AnimatePresence,motion } from "framer-motion";
 import axios from "axios";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
@@ -62,11 +63,24 @@ const MultiStepForm:React.FC=()=>{
             onSubmit={formik.handleSubmit}
             >
                 <h1 className="text-4xl mb-10">Formik + Yup Multi step Form</h1>
+                
                 <div>
+
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={step}
+                            initial={{opacity:0,x:100}}
+                            animate={{opacity:1,x:0}}
+                            exit={{opacity:0,x:-100}}
+                            transition={{duration:0.4}}
+                        >
+
                     {step===0 && <Step1 formik={formik}/>}
                     {step===1 && <Step2 formik={formik}/>}
                     {step===2 && <Step3 formik={formik}/>}
+                        </motion.div>
 
+                    </AnimatePresence>
                     <div className="flex gap-4">
                         {step>0 && (
                             <button
